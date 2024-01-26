@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #hero
+    img(src="https://www.theodinproject.com/mstile-310x310.png", alt="", srcset="")
+    #welcome 
+      h1 Welcome to #{title}
+      .welcome-wrapper
+        h2 Sign Up to access the message board.
+        a(href="signup"): button#signup Create an account
+      .welcome-wrapper
+        p Already have an account?
+        a(href="login"): button#login Log in
+
