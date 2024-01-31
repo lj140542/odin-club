@@ -65,6 +65,17 @@ router.post('/signup', [
     .isLength({ min: 1, max: 100 })
     .escape()
     .withMessage('Password must be specified (max 100 characters).'),
+  body('confirm_password')
+    .trim()
+    .isLength({ min: 1, max: 100 })
+    .escape()
+    .withMessage('Password confirmation must be specified (max 100 characters).')
+    .custom((confirm_password, { req }) => {
+      if (confirm_password !== req.body.password) {
+        throw new Error('The passwords do not match');
+      }
+      return true;
+    }),
 
   async (req, res, next) => {
     const errors = validationResult(req);
