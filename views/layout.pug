@@ -6,6 +6,24 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    if(header)
+      header 
+        a.header-wrapper(href="/")
+          img#header-logo(src="images/odin-logo.png", alt="Odin project logo", srcset="")
+          h1#header-title= title
+        nav#header-navbar
+          ul  
+            li 
+              a(href='/join') 
+                svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24")
+                  title Join the club
+                  path(d="M17 14H19V17H22V19H19V22H17V19H14V17H17V14M5 20V12H2L12 3L22 12H17V10.19L12 5.69L7 10.19V18H12C12 18.7 12.12 19.37 12.34 20H5Z")
+            li
+              a(href='/logout') 
+                svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24")
+                  title Logout 
+                  path(d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12M4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z")
+
     main 
       block content
     footer 
