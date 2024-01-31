@@ -66,7 +66,7 @@ header {
   justify-content: center;
   text-decoration: none;
   height: 2rem;
-  width: 2rem;
+  min-width: 2rem;
 }
 
 main {
@@ -172,6 +172,15 @@ footer a {
 
 .form-box {
   width: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.join-form-box {
+  min-width: 500px;
+  width: 50%;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;

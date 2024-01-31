@@ -1,4 +1,7 @@
 extends layout
 
 block content 
-  h1 Dashboard
+  if (user.club_member == 'true')
+    h1 Welcome back #{user.firstname}
+  else 
+    h1 Consider joining the club
