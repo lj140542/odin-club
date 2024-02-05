@@ -1,0 +1,20 @@
+extends layout
+
+block content 
+  .form-box
+    h2 New post
+    form(method="POST" action="")
+      .input-box 
+        input#post-title(type="" name="title" value=(undefined===post ? '' : post.title) required)
+        label(for="title") Title
+      .textarea-box 
+        textarea#post-text(type="" name="text" placeholder="Type your post here" required)
+          if(undefined!==post)
+            =post.text
+        label(for="text" hidden) Post
+      button(type="submit") Create 
+
+    if errors
+      ul
+        for error in errors
+          li.error-message!= error.msg

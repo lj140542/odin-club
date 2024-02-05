@@ -15,4 +15,8 @@ PostSchema.virtual('formatted_timestamp').get(function () {
   return DateTime.fromJSDate(this.timestamp).toISODate();
 });
 
+PostSchema.virtual("url").get(function () {
+  return `/post/${this._id}`;
+});
+
 module.exports = mongoose.model('Post', PostSchema);
