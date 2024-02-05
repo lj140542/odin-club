@@ -39,7 +39,7 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('signup', { title: 'Odin Club' })
+  res.render('signup')
 });
 // post request to signup => handle the signup
 router.post('/signup', [
@@ -90,7 +90,6 @@ router.post('/signup', [
 
     if (!errors.isEmpty()) {
       res.render('signup', {
-        title: 'Odin Club',
         user: user,
         errors: errors.array()
       });
@@ -110,7 +109,7 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('login', { title: 'Odin Club' })
+  res.render('login')
 });
 // post request to login => handle the login
 router.post('/login', passport.authenticate("local", {

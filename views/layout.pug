@@ -3,14 +3,14 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title= title
+    title Odin Club
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     if(header)
       header 
         a.header-wrapper(href="/")
           img#header-logo(src="images/odin-logo.png", alt="Odin project logo", srcset="")
-          h1#header-title= title
+          h1#header-title Odin Club
         nav#header-navbar
           ul  
             if (user.club_member == 'false')

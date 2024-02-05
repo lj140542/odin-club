@@ -4,10 +4,10 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
   if (req.user) {
-    res.render('dashboard', { header: true, title: 'Odin Club' });
+    res.render('dashboard', { header: true });
     return;
   }
-  res.render('index', { title: 'Odin Club' });
+  res.render('index');
 });
 
 // JOIN ROUTES
@@ -18,7 +18,7 @@ router.get('/join', (req, res, next) => {
       return;
     }
 
-    res.render('join', { header: true, title: 'Odin Club' });
+    res.render('join', { header: true });
   } catch (error) {
     next(error);
   }
@@ -36,7 +36,7 @@ router.post('/join', async (req, res, next) => {
     await user.save();
     res.redirect('/');
   } else {
-    res.render('join', { header: true, title: 'Odin Club', wrong_passcode: true })
+    res.render('join', { header: true, wrong_passcode: true })
   }
 });
 
