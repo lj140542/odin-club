@@ -20,7 +20,8 @@ body {
   background-color: var(--background-color);
 }
 
-h1 {
+h1,
+#welcome h1 {
   font-size: 3rem;
   line-height: 3.2rem;
 }
@@ -94,13 +95,13 @@ main {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   gap: 30px;
+  max-width: 350px;
 }
 
 .welcome-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 70%;
   gap: 10px;
 }
 
@@ -174,6 +175,7 @@ footer a {
 
 .form-box {
   width: 100%;
+  max-width: 750px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
@@ -282,7 +284,7 @@ footer a {
   display: flex;
   flex-direction: column;
   padding: 50px;
-  height: 80%;
+  flex: 1;
   width: 90%;
 }
 
@@ -290,6 +292,7 @@ footer a {
 .dashboard-post-subtitle {
   font-size: .8rem;
   color: var(--font-color-50);
+  padding-top: 10px;
 }
 
 #post-detail-text {
@@ -334,4 +337,28 @@ footer a {
   padding-top: 10px;
   white-space: pre-wrap;
   overflow: hidden;
+}
+
+@media (width < 750px) {
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  #hero {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  #hero img {
+    height: 50px;
+    width: auto;
+  }
+
+  .wrapper {
+    width: 350px;
+  }
+
+  #post-detail {
+    padding: 30px;
+  }
 }
