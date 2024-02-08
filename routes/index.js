@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const Post = require('../models/post');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', async (req, res, next) => {
   if (req.user) {
-    res.render('dashboard', { header: true });
+    const posts = await Post.find({}).populate('author').exec();
+    res.render('dashboard', { header: true, posts: posts });
     return;
   }
   res.render('index');
