@@ -20,7 +20,7 @@ router.get('/join', (req, res, next) => {
       return;
     }
 
-    res.render('join', { header: true });
+    res.render('join', { header: true, back: true });
   } catch (error) {
     next(error);
   }
@@ -38,7 +38,7 @@ router.post('/join', async (req, res, next) => {
     await user.save();
     res.redirect('/');
   } else {
-    res.render('join', { header: true, wrong_passcode: true })
+    res.render('join', { header: true, back: true, wrong_passcode: true })
   }
 });
 

@@ -7,7 +7,7 @@ const { isValidObjectId } = require('mongoose');
 // GET new => new post form
 router.get('/new', (req, res, next) => {
   if (req.user) {
-    res.render('post-form', { header: true });
+    res.render('post-form', { header: true, back: true });
     return;
   }
   res.redirect('/');
@@ -48,6 +48,7 @@ router.post('/new', [
     if (!errors.isEmpty()) {
       res.render('post-form', {
         header: true,
+        back: true,
         post: post,
         errors: errors.array()
       });
@@ -81,6 +82,7 @@ router.get('/:id', async (req, res, next) => {
 
   res.render('post-detail', {
     header: true,
+    back: true,
     post: post,
   });
 });
@@ -108,6 +110,7 @@ router.get('/delete/:id', async (req, res, next) => {
 
   res.render('post-delete', {
     header: true,
+    back: true,
     post: post,
   });
 });
