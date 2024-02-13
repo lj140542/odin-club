@@ -1,0 +1,9 @@
+extends layout
+
+block content   
+  .delete-form-box
+    h2 Delete post
+    p Do you want to delete the post "#{post.title}"
+    
+    form(method="POST" action="")
+      button(type="submit") Confirm 

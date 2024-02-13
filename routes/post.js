@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
 const { body, validationResult } = require('express-validator');
+const { isValidObjectId } = require('mongoose');
 
 // GET new => new post form
 router.get('/new', (req, res, next) => {
@@ -64,6 +65,12 @@ router.get('/:id', async (req, res, next) => {
     return;
   }
 
+  if (!isValidObjectId(req.params.id)) {
+    err = new Error('Bad parameter: id is not an actual DB ID');
+    err.status = 400;
+    return next(err);
+  }
+
   const post = await Post.findById(req.params.id).populate('author').exec();
 
   if (null === post) {
@@ -76,6 +83,50 @@ router.get('/:id', async (req, res, next) => {
     header: true,
     post: post,
   });
+});
+
+// GET delete => verification before deletion
+router.get('/delete/:id', async (req, res, next) => {
+  if (!req.user || !req.user.admin) {
+    res.redirect('/');
+    return;
+  }
+
+  if (!isValidObjectId(req.params.id)) {
+    err = new Error('Bad parameter: id is not an actual DB ID');
+    err.status = 400;
+    return next(err);
+  }
+
+  const post = await Post.findById(req.params.id).exec();
+
+  if (null === post) {
+    let error = new Error('post not found');
+    error.status = 404;
+    next(error);
+  }
+
+  res.render('post-delete', {
+    header: true,
+    post: post,
+  });
+});
+
+// POST delete => handle the post deletion 
+router.post('/delete/:id', async (req, res, next) => {
+  if (!req.user || !req.user.admin) {
+    res.redirect('/');
+    return;
+  }
+
+  if (!isValidObjectId(req.params.id)) {
+    err = new Error('Bad parameter: id is not an actual DB ID');
+    err.status = 400;
+    return next(err);
+  }
+
+  await Post.findByIdAndDelete(req.params.id);
+  res.redirect('/');
 });
 
 module.exports = router;

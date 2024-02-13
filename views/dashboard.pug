@@ -1,7 +1,7 @@
 extends layout
 
 block content 
-  #dashboard-container
+  .container
     if (user.club_member)
       h1 Welcome back #{user.firstname}
     else 
@@ -14,6 +14,12 @@ block content
             h2.dashboard-post-title= post.title
             p.dashboard-post-subtitle #{user.club_member ? post.author.username : '***'} on #{post.formatted_timestamp}
             p.dashboard-post-text= post.text
+            if (user.admin)
+              form#delete-post-form(action="/post/delete/"+post._id, method="get") 
+                button#delete-post-button(type="sumbit") 
+                  svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24")
+                      title Delete post 
+                      path(d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z")
       else 
         h2 No post yet.. 
         |Be the first to write one by clicking the pen button  

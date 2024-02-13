@@ -182,7 +182,8 @@ footer a {
   gap: 10px;
 }
 
-.join-form-box {
+.join-form-box,
+.delete-form-box {
   min-width: 500px;
   width: 50%;
   padding: 2.5rem;
@@ -258,9 +259,6 @@ footer a {
   position: fixed;
   bottom: 10%;
   right: 40px;
-}
-
-#new-post-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -276,6 +274,28 @@ footer a {
 
 #new-post-button path {
   fill: var(--background-color);
+}
+
+/* DELETE POST BUTTON  */
+
+#delete-post-form {
+  display: flex;
+  align-self: flex-end;
+}
+
+#delete-post-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+}
+
+#delete-post-button svg {
+  height: 70%;
+  width: 70%;
 }
 
 /* POST DETAIL */
@@ -302,7 +322,7 @@ footer a {
 
 /* DASHBOARD */
 
-#dashboard-container {
+.container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -337,6 +357,7 @@ footer a {
   padding-top: 10px;
   white-space: pre-wrap;
   overflow: hidden;
+  flex: 1;
 }
 
 @media (width < 750px) {
