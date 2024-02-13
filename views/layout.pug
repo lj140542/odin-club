@@ -13,7 +13,7 @@ html
           h1#header-title Odin Club
         nav#header-navbar
           ul  
-            if (user.club_member == 'false')
+            if (!user.club_member)
               li 
                 a(href='/join') Join the club
             li

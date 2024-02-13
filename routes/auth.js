@@ -98,7 +98,7 @@ router.post('/signup', [
 
     user.password = await bcrypt.hash(req.body.password, 10);
     await user.save();
-    res.redirect('/');
+    res.redirect('/login');
   },
 ]);
 

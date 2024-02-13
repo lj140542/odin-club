@@ -2,7 +2,7 @@ extends layout
 
 block content 
   #dashboard-container
-    if (user.club_member == 'true')
+    if (user.club_member)
       h1 Welcome back #{user.firstname}
     else 
       h1 Consider joining the club
@@ -12,7 +12,7 @@ block content
         for post in posts 
           a(href=post.url).dashboard-post
             h2.dashboard-post-title= post.title
-            p.dashboard-post-subtitle #{user.club_member == 'true' ? post.author.username : '***'} on #{post.formatted_timestamp}
+            p.dashboard-post-subtitle #{user.club_member ? post.author.username : '***'} on #{post.formatted_timestamp}
             p.dashboard-post-text= post.text
       else 
         h2 No post yet.. 

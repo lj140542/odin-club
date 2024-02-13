@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 // JOIN ROUTES
 router.get('/join', (req, res, next) => {
   try {
-    if (!req.user || req.user.club_member == 'true') {
+    if (!req.user || req.user.club_member) {
       res.redirect('/');
       return;
     }

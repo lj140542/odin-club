@@ -4,6 +4,6 @@ block content
   #post-detail
     h1#post-detail-title= post.title
 
-    p#post-detail-subtitle #{user.club_member == 'true' ? post.author.username : '***'} on #{post.formatted_timestamp}
+    p#post-detail-subtitle #{user.club_member ? post.author.username : '***'} on #{post.formatted_timestamp}
 
     p#post-detail-text= post.text
